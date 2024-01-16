@@ -1,29 +1,23 @@
+"use strict";
 
-"use strict"
+const button = document.querySelector("button");
+let inputField = document.querySelector("input");
+let input = inputField.value.trim();
 
-  const button = document.querySelector("button")                 
-  const input = document.querySelector("input")                   
-  
+button.addEventListener("click", (e) => {
+  input = (parseInt(input) + 1).toString();
+  localStorage.setItem("inputCount", input);
 
-  button.addEventListener("click", (e)=> {                                
+  const count = localStorage.getItem("inputCount");
+  console.log("Count:", count);
 
-    
-       
-
-    console.log( parseInt(input.value));    
-    
-    input.value=parseInt(input.value)+1
-    
-   
-
-  })
-
-
-  // var audio = new Audio('audio_file.mp3');
-  // audio.play();
-
-  function play() {
-    var audio = new Audio('./audio/button.mp3');
-    audio.play();
-  }
  
+  inputField.value = count;
+
+  play(); 
+});
+
+function play() {
+  var audio = new Audio('./audio/button.mp3');
+  audio.play();
+}
